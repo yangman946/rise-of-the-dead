@@ -1,0 +1,309 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://interface/counter/money/money.tscn" type="PackedScene" id=1]
+[ext_resource path="res://interface/counter/health/health.tscn" type="PackedScene" id=2]
+[ext_resource path="res://interface/arrow.tscn" type="PackedScene" id=3]
+[ext_resource path="res://interface/arrow_R.tscn" type="PackedScene" id=4]
+[ext_resource path="res://sprites/pause.png" type="Texture" id=5]
+[ext_resource path="res://interface/theme/font/dynamicfont.tres" type="Theme" id=6]
+[ext_resource path="res://interface/counter/level.tscn" type="PackedScene" id=7]
+[ext_resource path="res://interface/theme/font/large.tres" type="Theme" id=8]
+[ext_resource path="res://interface.gd" type="Script" id=9]
+[ext_resource path="res://confirm.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Options.tscn" type="PackedScene" id=11]
+
+[sub_resource type="Animation" id=1]
+resource_name = "newWave"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("VBoxContainer2/Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.5, 0.6, 0.8, 0.9, 1, 1.1, 1.2, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 0.439216, 0.439216, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 0.439216, 0.439216, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 0.439216, 0.439216, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 0.439216, 0.439216, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="interface" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 9 )
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="."]
+margin_right = 428.0
+margin_bottom = 175.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer3"]
+margin_right = 428.0
+margin_bottom = 175.0
+size_flags_horizontal = 3
+
+[node name="Control2" parent="HBoxContainer3/VBoxContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 428.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 200, 70 )
+
+[node name="Control" parent="HBoxContainer3/VBoxContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 74.0
+margin_right = 428.0
+margin_bottom = 144.0
+rect_min_size = Vector2( 200, 70 )
+
+[node name="Control3" parent="HBoxContainer3/VBoxContainer" instance=ExtResource( 7 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 148.0
+margin_right = 428.0
+margin_bottom = 148.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+visible = false
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -28.0
+margin_right = 50.0
+margin_bottom = 22.0
+
+[node name="Control" parent="HBoxContainer" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_bottom = 50.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+visible = false
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -50.0
+margin_top = -25.0
+margin_bottom = 25.0
+
+[node name="Control" parent="HBoxContainer2" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_bottom = 50.0
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -250.0
+margin_top = 200.0
+margin_right = 250.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 500, 0 )
+
+[node name="Tooltip" type="Label" parent="VBoxContainer3"]
+margin_right = 500.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 500, 0 )
+theme = ExtResource( 6 )
+text = "placeholder"
+align = 1
+autowrap = true
+
+[node name="bottomMenu" type="HBoxContainer" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -120.0
+alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -188.0
+margin_top = 20.0
+margin_right = -20.0
+margin_bottom = 150.0
+
+[node name="Button" type="Button" parent="VBoxContainer2"]
+margin_right = 168.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 0, 60 )
+focus_mode = 0
+icon = ExtResource( 5 )
+flat = true
+icon_align = 1
+expand_icon = true
+
+[node name="Label" type="Label" parent="VBoxContainer2"]
+margin_top = 64.0
+margin_right = 168.0
+margin_bottom = 84.0
+theme = ExtResource( 6 )
+text = "Wave 1"
+align = 1
+valign = 1
+
+[node name="speed" type="Button" parent="VBoxContainer2"]
+margin_top = 88.0
+margin_right = 168.0
+margin_bottom = 148.0
+rect_min_size = Vector2( 0, 60 )
+focus_mode = 0
+theme = ExtResource( 6 )
+custom_colors/font_color_hover = Color( 0.811765, 0.811765, 0.811765, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "1x"
+flat = true
+icon_align = 1
+expand_icon = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/newWave = SubResource( 1 )
+
+[node name="pauseScreen" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.376471 )
+
+[node name="Label2" type="Label" parent="pauseScreen"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -144.0
+margin_top = 100.0
+margin_right = 144.0
+margin_bottom = 132.0
+theme = ExtResource( 8 )
+text = "PAUSED"
+align = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="pauseScreen"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+
+[node name="Button4" type="Button" parent="pauseScreen/VBoxContainer"]
+pause_mode = 2
+margin_right = 1024.0
+margin_bottom = 26.0
+focus_mode = 0
+theme = ExtResource( 6 )
+custom_colors/font_color_hover = Color( 0.709804, 0.529412, 0.529412, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "Resume"
+flat = true
+
+[node name="options" type="Button" parent="pauseScreen/VBoxContainer"]
+pause_mode = 2
+margin_top = 30.0
+margin_right = 1024.0
+margin_bottom = 56.0
+focus_mode = 0
+theme = ExtResource( 6 )
+custom_colors/font_color_hover = Color( 0.709804, 0.529412, 0.529412, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "Options"
+flat = true
+
+[node name="Button2" type="Button" parent="pauseScreen/VBoxContainer"]
+pause_mode = 2
+margin_top = 60.0
+margin_right = 1024.0
+margin_bottom = 86.0
+focus_mode = 0
+theme = ExtResource( 6 )
+custom_colors/font_color_hover = Color( 0.709804, 0.529412, 0.529412, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "Menu"
+flat = true
+
+[node name="Button3" type="Button" parent="pauseScreen/VBoxContainer"]
+pause_mode = 2
+margin_top = 90.0
+margin_right = 1024.0
+margin_bottom = 116.0
+focus_mode = 0
+theme = ExtResource( 6 )
+custom_colors/font_color_hover = Color( 0.709804, 0.529412, 0.529412, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "Quit"
+flat = true
+
+[node name="deathScreen" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.376471 )
+
+[node name="Label" type="Label" parent="deathScreen"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -144.0
+margin_top = 100.0
+margin_right = 144.0
+margin_bottom = 32.0
+theme = ExtResource( 8 )
+text = "GAME OVER"
+
+[node name="rounds" type="Label" parent="deathScreen"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -67.5
+margin_bottom = 67.5
+theme = ExtResource( 6 )
+text = "you lasted x rounds
+
+Zombies killed: x
+Units deployed: x
+
+"
+align = 1
+autowrap = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="deathScreen"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -200.0
+
+[node name="Button" type="Button" parent="deathScreen/VBoxContainer"]
+pause_mode = 2
+margin_right = 1024.0
+margin_bottom = 26.0
+focus_mode = 0
+theme = ExtResource( 6 )
+custom_colors/font_color_hover = Color( 0.709804, 0.529412, 0.529412, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "Exit to menu"
+flat = true
+
+[node name="retry" type="Button" parent="deathScreen/VBoxContainer"]
+pause_mode = 2
+margin_top = 30.0
+margin_right = 1024.0
+margin_bottom = 56.0
+theme = ExtResource( 6 )
+custom_colors/font_color_hover = Color( 0.709804, 0.529412, 0.529412, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "Retry"
+flat = true
+
+[node name="confirm" parent="." instance=ExtResource( 10 )]
+visible = false
+
+[node name="options" parent="." instance=ExtResource( 11 )]
+visible = false
+
+[connection signal="pressed" from="pauseScreen/VBoxContainer/Button4" to="." method="_on_Button4_pressed"]
+[connection signal="pressed" from="pauseScreen/VBoxContainer/options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="pauseScreen/VBoxContainer/Button2" to="." method="_on_Button2_pressed"]
+[connection signal="pressed" from="pauseScreen/VBoxContainer/Button3" to="." method="_on_Button3_pressed"]
+[connection signal="pressed" from="deathScreen/VBoxContainer/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="deathScreen/VBoxContainer/retry" to="." method="_on_retry_pressed"]
